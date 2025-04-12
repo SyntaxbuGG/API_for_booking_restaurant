@@ -68,6 +68,8 @@ bash
 docker-compose exec app alembic revision --autogenerate -m "Initial tables"
 docker-compose exec app alembic upgrade head
 
+Перейти на сайт swagger 127.0.0.1:8000/docs
+
 ```
 ## Пример запроса на создание брони
 ```http
