@@ -83,18 +83,21 @@ Content-Type: application/json
 bash
 docker-compose down -v 
 
-🗂 Структура проекта
-API_for_booking_restaurant/
-├── alembic/              # миграции
+## 🗂 Структура проекта
+
+```bash
+restaurant_reservation/
+├── alembic/              # Миграции базы данных
 ├── app/
-│   ├── models/           # модели SQLAlchemy
-│   ├── schemas/          # Pydantic схемы
-│   ├── services/         # бизнес-логика
-│   ├── routers/          # маршруты API
-│   ├── database.py       # подключение к БД
-│   └── main.py           # точка входа FastAPI
-├── tests/                # тесты
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-└── README.md
+│   ├── models/           # SQLAlchemy модели
+│   ├── schemas/          # Pydantic схемы (DTO)
+│   ├── services/         # Бизнес-логика
+│   ├── routers/          # FastAPI эндпоинты
+│   ├── database.py       # Подключение к PostgreSQL
+│   └── main.py           # Запуск приложения
+├── tests/                # Pytest тесты
+├── Dockerfile            # Образ для Docker
+├── docker-compose.yml    # Конфигурация сервисов
+├── requirements.txt      # Зависимости
+└── README.md            # Документация
+```
