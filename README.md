@@ -85,9 +85,10 @@ Content-Type: application/json
 ```
 ## Остановка проекта 
 bash
+```
 docker-compose down      # остановка docker  
 docker-compose down -v   # удаляем volumes  
-
+```
 ## 🗂 Структура проекта
 
 ```bash
