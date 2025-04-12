@@ -83,9 +83,10 @@ Content-Type: application/json
   "duration_minutes": 90
 }
 ```
-## Остановка проекта
+## Остановка проекта 
 bash
-docker-compose down -v 
+docker-compose down      # остановка docker
+docker-compose down -v   # удаляем volumes 
 
 ## 🗂 Структура проекта
 
