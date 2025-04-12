@@ -9,7 +9,7 @@ API-сервис для бронирования столиков в ресто�
 - [SQLAlchemy](https://www.sqlalchemy.org/) / [SQLModel](https://sqlmodel.tiangolo.com/) — ORM
 - [Alembic](https://alembic.sqlalchemy.org/) — миграции
 - [Docker](https://www.docker.com/) + [docker-compose](https://docs.docker.com/compose/) — контейнеризация
-- [Pytest](https://docs.pytest.org/) — тестирование (опционально)
+- [Pytest](https://docs.pytest.org/) — тестирование (опционально) ❌ Не готово
 
 ---
 
@@ -97,7 +97,7 @@ restaurant_reservation/
 │   ├── routers/          # FastAPI эндпоинты
 │   ├── database.py       # Подключение к PostgreSQL
 │   └── main.py           # Запуск приложения
-├── tests/                # Pytest тесты
+├── tests/                # Pytest тесты ❌ Не готово
 ├── Dockerfile            # Образ для Docker
 ├── docker-compose.yml    # Конфигурация сервисов
 ├── requirements.txt      # Зависимости
