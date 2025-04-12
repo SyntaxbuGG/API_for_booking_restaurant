@@ -68,9 +68,7 @@ docker-compose exec app alembic revision --autogenerate -m "Initial tables"
 docker-compose exec app alembic upgrade head
 
 ## Пример запроса на создание брони
-http
-Копировать
-Редактировать
+```http
 POST /reservations/
 Content-Type: application/json
 
@@ -80,10 +78,10 @@ Content-Type: application/json
   "reservation_time": "2025-04-12T18:00:00",
   "duration_minutes": 90
 }
-
+```
 ## Остановка проекта
 bash
-docker-compose down
+docker-compose down -v 
 
 
 
