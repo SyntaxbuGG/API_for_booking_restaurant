@@ -55,6 +55,7 @@ API-сервис для бронирования столиков в ресто�
 ## ⚙️ Установка и запуск
 
 ### 1. Клонировать репозиторий
+```
 bash
 git clone https://github.com/SyntaxbuGG/API_for_booking_restaurant.git .
 
@@ -67,6 +68,7 @@ bash
 docker-compose exec app alembic revision --autogenerate -m "Initial tables"
 docker-compose exec app alembic upgrade head
 
+```
 ## Пример запроса на создание брони
 ```http
 POST /reservations/
