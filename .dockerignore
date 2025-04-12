@@ -1,0 +1,52 @@
+# Кэш и временные файлы Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Виртуальные окружения
+.venv/
+venv/
+env/
+ENV/
+
+# Файлы журналов и отладочной информации
+*.log
+*.coverage
+.coverage.*
+.cache/
+*.cover
+*.py,cover
+coverage.xml
+nosetests.xml
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.hypothesis/
+
+# Конфиденциальные и конфигурационные файлы
+.env
+.env.*
+*.pem
+*.key
+
+# Системные и редакторские файлы
+.DS_Store
+.vscode/
+.idea/
+
+# Git-репозиторий
+.git/
+.gitignore
+
+# Файлы и каталоги, не относящиеся к приложению
+tests/
+scripts/
+docs/
+README.md
+Dockerfile
+docker-compose.yml
+*.md
+*.yml
+*.yaml
