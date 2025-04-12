@@ -29,6 +29,8 @@ services:
     environment:
       ASYNC_DATABASE_URL: postgresql+asyncpg://user:password@postgres:5432/dbname  # Async
       SYNC_DATABASE_URL: postgresql://user:password@postgres:5432/dbname      # Sync
+    volumes:
+      - ./alembic/versions:/app/alembic/versions  # 🔥 Важно! Сохраняем миграции на хосте
       
 
 volumes:
