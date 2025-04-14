@@ -61,11 +61,12 @@ git clone https://github.com/SyntaxbuGG/API_for_booking_restaurant.git .
 
 2. Запустить проект с помощью Docker
 bash
+docker-compose run app alembic revision --autogenerate -m "Initial tables"
 docker-compose up --build
 
 3. Активировать миграции alembic вручную в первый раз после запуска docker 
 bash 
-docker-compose exec app alembic revision --autogenerate -m "Initial tables"
+docker-compose exec app alembic revision --autogenerate -m "Change modeles"
 docker-compose exec app alembic upgrade head
 
 Перейти на сайт swagger 127.0.0.1:8000/docs

@@ -4,16 +4,16 @@ from pydantic import BaseModel, Field
 
 class ReservationCreate(BaseModel):
     customer_name: str
-    table_id: int
     reservation_time: datetime
-    duration_minutes: int = Field(gt=0)
+    duration_minutes: int = Field(ge=10)
+    guest_count: int = Field(ge=1)
 
 
 class ReservationResponse(BaseModel):
     id: int
     customer_name: str
-    table_id: int
     reservation_time: datetime
+    guest_count: int
     duration_minutes: int
 
     class Config:

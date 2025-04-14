@@ -7,7 +7,7 @@ from app.models.reservation import Reservation
 from app.models.table import Table
 from app.schemas.reservation import ReservationCreate, ReservationResponse
 from app.database import get_db
-from app.services.reservation import check_reservation_conflict
+from app.services.reservation import find_available_table
 
 router = APIRouter()
 
@@ -22,22 +22,31 @@ async def read_reservations(db: AsyncSession = Depends(get_db)):
 async def create_reservation(
     reservation: ReservationCreate, db: AsyncSession = Depends(get_db)
 ):
-    # Check table exists
-    table = await db.get(Table, reservation.table_id)
+    # Находим доступный столик автоматически
+    table_id = await find_available_table(
+        db,
+        reservation.reservation_time,
+        reservation.duration_minutes,
+        reservation.guest_count,
+    )
+
+    if not table_id:
+        raise HTTPException(
+            status_code=400,
+            detail="No available tables for the selected time and guest count",
+        )
+
+    # Проверяем, что столик существует (на всякий случай)
+    table = await db.get(Table, table_id)
     if not table:
         raise HTTPException(status_code=404, detail="Table not found")
 
-    # Check time conflict (добавляем await)
-    if await check_reservation_conflict(
-        db,
-        reservation.table_id,
-        reservation.reservation_time,
-        reservation.duration_minutes,
-    ):
-        raise HTTPException(status_code=400, detail="Time slot already booked")
-
-    # Create reservation
-    db_reservation = Reservation(**reservation.dict())
+    # Создаем бронь с автоматически найденным table_id
+    db_reservation = Reservation(
+        **reservation.dict(),
+        table_id=table_id,  # Используем найденный столик
+    )
+    db_reservation.set_end_time()
     db.add(db_reservation)
     await db.commit()
     await db.refresh(db_reservation)
